@@ -1,0 +1,81 @@
+
+<!--Menu Info-->
+<div class="card" style="width: 18rem;" *ngFor="let menu of MenuItem; let i = index ">
+  <ng-container>
+    <img src="../../../assets/images/{{menu.NAME | lowercase }}.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h2 class="card-title">{{menu.NAME}}</h2>
+      <div class="menudes">
+        <div class=""><strong>NAME : </strong> <span>{{menu.NAME}}</span></div>
+        <div class=""><strong>TYPE : </strong> <span>{{menu.TYPE}}</span></div>
+        <div class=""><strong>CUISINE : </strong><span>{{menu.CUISINE}}</span></div>
+        <div class=""><strong>AVAILABILITY : </strong><span *ngFor="let avail of menu.AVAILABILITY">{{avail + "
+            "}}</span></div>
+        <div class=""><strong>PRICE : </strong><span>{{menu.PRICE | currency: 'INR'}}</span></div>
+      </div>
+      <div class="buynow">
+        <button class="btn btn-primary"  (click)="removeItems($event,i,menu)" [disabled]="menu.qty ==0 " > - </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span><strong>{{menu.qty}}</strong></span> &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="addItems($event,i,menu)"> + </button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<!-- Before Cart review orders -->
+<div class="item-display" *ngIf="orderedItems.length !=0">
+  <!-- {{orderedItems | json}} -->
+  <h3>Review Cart Items</h3>
+  <div class="container">
+    <div class="col-sm-2">Total Item Purchased :</div>
+    <div class="col-sm-2">{{orderedItems.length}}</div>
+    <div class="col-sm-2">Total Qty purchased : </div>
+    <div class="col-sm-2">{{selectedqty}}</div>
+    <div class="col-sm-2">Grant Total : </div>
+    <div class="col-sm-1">{{grantTotal  | currency: 'INR'}} </div>
+    <div class="col-sm-1"><button class="btn btn-primary" routerLink="/viewcart">View Cart<i class="fa fa-shopping-cart"></i></button></div>
+  </div>
+
+
+
+  <!-- <h3>You Selected Items:</h3> -->
+  <!-- <div class="container">
+    <div class="col-sm-12">
+      <div class="col-sm-2">ITEM NAME</div>
+      <div class="col-sm-2">ITEM TYPE</div>
+      <div class="col-sm-2">ITEM CUISINE</div>
+      <div class="col-sm-2">ITEM PRICE</div>
+      <div class="col-sm-2">ITEM QTY</div>
+      <div class="col-sm-2">TOTAL</div>
+    </div>
+
+    <div class="col-sm-12" *ngFor="let order of orderedItems">
+      <div class="col-sm-2">{{order.NAME}}</div>
+      <div class="col-sm-2">{{order.TYPE}}</div>
+      <div class="col-sm-2">{{order.CUISINE}}</div>
+      <div class="col-sm-2">{{order.PRICE}}</div>
+      <div class="col-sm-2">{{order.qty}}</div>
+      <div class="col-sm-2">{{order.qty * order.PRICE}}</div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">Grant Total</div>
+      <div class="col-sm-2">------------</div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">{{grantTotal}}</div>
+      <div class="col-sm-2"><button class="btn btn-primary" routerLink="/viewcart"> View Cart </button></div>
+    </div>
+  </div> -->
+
+</div>
