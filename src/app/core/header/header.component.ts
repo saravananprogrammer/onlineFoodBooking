@@ -1,5 +1,5 @@
 import { Component, OnInit,EventEmitter, Output, Input, HostListener } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute,Router,NavigationEnd   } from '@angular/router'
 
 
 
@@ -10,12 +10,18 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class HeaderComponent implements OnInit {
   
-
-  constructor(private route:ActivatedRoute) { }
+  MenuHead:any
+  currentRoute:any
+  constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
 
-    console.log("Route==========>",this.route.url)
+    console.log(this.router.url);
+
+    
+
+    
+   
   }
 
  

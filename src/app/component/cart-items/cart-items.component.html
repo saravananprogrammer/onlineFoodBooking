@@ -1,1 +1,120 @@
-<p>cart-items works!</p>
+
+
+
+
+<div class="container-fluid" *ngIf="CartShow " >
+    <!-- If Needed Left and Right Padding in 'md' and 'lg' screen means use container class -->
+    <div class="row">
+        <i class="fa fa-shopping-cart" style="font-size:98px;color:red"></i> 
+        <h2>Checkout Your Items</h2>
+        
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+     <!--Success order-->
+     <div class="row order-success" *ngIf="successDiv">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Order ID : {{orderId}}</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 bld">Your order is placed Successfully !!!</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">Payment Mode: {{paymentType}}</div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Order No
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Order Name
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Order Qty
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Order Booked
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Item Price
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            Total
+        </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row"></div>
+    <div class="row " *ngFor="let order of orderedFood; let i=index">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{i+1}}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{order.NAME}}
+        </div>
+        
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <button class="btn btn-primary round" (click)="removeItems($event,i,order)" [disabled]="order.qty ==0"> - </button>&nbsp;&nbsp;
+            {{order.qty}}
+            &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary round" (click)="addItems($event,i,order)"> + </button>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{order.orderDate | date :'short'}}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{order.PRICE }}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{order.qty * order.PRICE | currency: 'INR'}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">Grant Totoal</div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 bld">---------------</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld"></div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 bld">{{grantTotal | currency:'INR'}}</div>
+    </div>
+
+    
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld">   Payment Mode</div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+            <select class="form-select" (change)="paymentTypesetting($event)">
+                <option value="">Please select payment</option>
+                <option value="COD">Cash On Delivery</option>
+                <option value="UPI">UPI </option>
+                <option value="NFET">Net Banking</option>
+                
+            </select>
+
+
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld"><button class="btn btn-primary" [disabled]="orderEnable != true" (click)="placeOrder()"> Place Your order</button></div>
+                
+
+
+        
+    </div>
+    <div class="row"></div>
+   
+
+
+   
+
+
+</div>
+<div class="conatiner-fluid" *ngIf="!CartShow">
+    <div class="row">
+        <i class="fa fa-shopping-cart" style="font-size:98px;color:red"></i>
+        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h5>Your Cart is Empty !!!</h5>
+        <a routerLink="/menu">Go to Menu page </a>
+</div>
+

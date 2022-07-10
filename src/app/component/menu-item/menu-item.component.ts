@@ -16,7 +16,7 @@ export class MenuItemComponent implements OnInit {
   grantTotal:any = 0;
 
   cartofproduct:any = []
-  
+
   constructor(private foodService:CommonserviceService) { }
 
   ngOnInit(): void {
@@ -50,6 +50,8 @@ export class MenuItemComponent implements OnInit {
 
     ]
 
+    this.foodService.setMenu(this.MenuItem);
+
     
   }
 
@@ -64,16 +66,17 @@ export class MenuItemComponent implements OnInit {
     }
     //console.log("order items check======>",this.orderedItems.includes(menu))
     if(this.orderedItems.includes(menu) == false){
-
       this.orderedItems.push(menu) 
-
-      
     }
 
     /* Total Caluckation */
     this.grantTotal =  this.sumofTotal(this.orderedItems)
+    this.foodService.setTotal(this.grantTotal);
     /* Total qty */
     this.selectedqty = this.sumofQty(this.orderedItems)
+
+    /*orderItems setting*/ 
+    this.foodService.setOrder(this.orderedItems);
 
   }
 
@@ -128,9 +131,13 @@ export class MenuItemComponent implements OnInit {
 
      /* Total Caluckation */
      this.grantTotal =  Math.abs(this.reduceofTotal(this.orderedItems))
+     this.foodService.setTotal(this.grantTotal)
      /* Total qty */
      this.selectedqty = Math.abs(this.reduceofQty(this.orderedItems))
 
+     /*orderItems setting*/ 
+    this.foodService.setOrder(this.orderedItems);
+    
 
     //  console.log("Grant total=====>",Math.abs(this.grantTotal),"selectedqty=====>",Math.abs(this.selectedqty))
 
