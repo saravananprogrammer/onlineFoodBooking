@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CartItemsComponent } from './component/cart-items/cart-items.component';
-import {MatTableModule} from '@angular/material/table';
+//import {MatTableModule} from '@angular/material/table';
+import {MaterialModule} from './material/material.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatTableModule} from '@angular/material/table';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule
+    //MatTableModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
