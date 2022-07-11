@@ -7,9 +7,7 @@
     <div class="row">
         <i class="fa fa-shopping-cart" style="font-size:98px;color:red"></i> 
         <h2>Checkout Your Items</h2>
-        
     </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
      <!--Success order-->
      <div class="row order-success" *ngIf="successDiv">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Order ID : {{orderId}}</div>
@@ -80,11 +78,13 @@
     </div>
 
     
-    <div class="row">
+    <div class="row"  >
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 "><button class="btn btn-link back" (click)="goToback()"> Back </button></div>
 
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld"></div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld">   Payment Mode</div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld">
+
+        <ng-container *ngIf="paymentShow ==true">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld">   Payment Mode</div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bld" >
             <select class="form-select" (change)="paymentTypesetting($event)">
                 <option value="">Please select payment</option>
                 <option value="COD">Cash On Delivery</option>
@@ -92,22 +92,17 @@
                 <option value="NFET">Net Banking</option>
                 
             </select>
-
-
         </div>
-
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bld"><button class="btn btn-primary" [disabled]="orderEnable != true" (click)="placeOrder()"> Place Your order</button></div>
-                
+        </ng-container>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngIf="paymentShow ==false"> <button class="btn btn-link back" (click)="router.navigate(['/order']);"> View your past orders </button></div>
 
 
-        
+
+    
     </div>
     <div class="row"></div>
-   
-
-
-   
-
 
 </div>
 <div class="conatiner-fluid" *ngIf="!CartShow">

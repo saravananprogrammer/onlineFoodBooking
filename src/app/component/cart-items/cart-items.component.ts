@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonserviceService} from '../../service/commonservice.service'
+import {CommonserviceService} from '../../service/commonservice.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-cart-items',
@@ -12,7 +14,7 @@ export class CartItemsComponent implements OnInit {
   grantTotal:any = 0;
   selectedqty:any
   CartShow:boolean=false;
-  constructor(private foodservice:CommonserviceService) { }
+  constructor(private foodservice:CommonserviceService,public router:Router) { }
 
   ngOnInit(): void {
 
@@ -37,6 +39,9 @@ export class CartItemsComponent implements OnInit {
     //console.log("orderedFood============>",this.orderedFood)
   }
 
+  goToback(){
+    this.router.navigate(['/'])
+  }
 
 
   addItems(event:any,index:any,menu:any){
@@ -130,6 +135,7 @@ export class CartItemsComponent implements OnInit {
   orderEnable:boolean =false;
   orderId:any;
   successDiv:boolean =false
+  paymentShow = true;
   paymentTypesetting(event:any){
     //console.log("event======>",event.target.value)
     this.paymentType = event.target.value
@@ -146,6 +152,8 @@ export class CartItemsComponent implements OnInit {
     }
     this.orderId = result;
     this.successDiv =true
+    //this.orderEnable = false;
+    this.paymentShow =false
     //console.log("Zoho======>",result)
 
   }

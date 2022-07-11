@@ -2,10 +2,10 @@
 <!--Menu Info-->
 <div ><h2>Menu Items</h2></div>
 <div class="container-fluid">
-  <div class="row"  *ngFor="let menu of MenuItem; let i = index ">
-    <div class="card" style="width: 18rem;">
+  <div class="row">
+    <div class="card" style="width: 18rem;"  *ngFor="let menu of MenuItem; let i = index ">
       <ng-container>
-        <img src="../../../assets/images/{{menu.NAME | lowercase }}.jpg" class="card-img-top" alt="...">
+        <!-- <img src="../../../assets/images/{{menu.NAME | lowercase }}.jpg" class="card-img-top" alt="..."> -->
         <div class="card-body">
           <h2 class="card-title">{{menu.NAME}}</h2>
           <div class="menudes">
