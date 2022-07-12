@@ -83,8 +83,7 @@ export class OrderItemComponent implements OnInit {
     }
   }
   applyFilter(filterValue: any) {
-    
-    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.target.value.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
