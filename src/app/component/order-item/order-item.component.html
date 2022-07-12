@@ -26,6 +26,11 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Itemtype"> Item Type </th>
         <td mat-cell *matCellDef="let element"> {{element.ItemType}} </td>
       </ng-container>
+      <ng-container matColumnDef="Cuisine">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Cuisine"> Cuisine </th>
+        <td mat-cell *matCellDef="let element"> {{element.Cuisine}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="OrderDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by orderdate"> Order Date </th>
         <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
