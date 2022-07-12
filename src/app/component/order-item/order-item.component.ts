@@ -10,15 +10,8 @@ import {Sort} from '@angular/material/sort';
   styleUrls: ['./order-item.component.scss']
 })
 
-
-
-
-
 export class OrderItemComponent implements OnInit {
-
   dummyOrderdata:any;
-
-  
   displayedColumns: string[] = ['ItemNo', 'ItemName', 'ItemType','OrderDate', 'ItemPrice'];
   dataSource = new MatTableDataSource<FoodItems>(last30DaysList);
  
@@ -73,4 +66,6 @@ const last30DaysList = ELEMENT_DATA.filter(x => {
   }
   return false
 })
+
+
 
