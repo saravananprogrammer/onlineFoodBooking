@@ -2,33 +2,33 @@
   <h3>Your Orders</h3>
 </div>
 <div class="example-container mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)">
   
       <!-- Position Column -->
-      <ng-container matColumnDef="ItemNo">
-        <th mat-header-cell *matHeaderCellDef > Item No </th>
+      <ng-container matColumnDef="ItemNo" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Item No </th>
         <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="ItemName">
-        <th mat-header-cell *matHeaderCellDef> Item Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Item Name </th>
         <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="ItemType">
-        <th mat-header-cell *matHeaderCellDef> Item Type </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Item Type </th>
         <td mat-cell *matCellDef="let element"> {{element.ItemType}} </td>
       </ng-container>
       <ng-container matColumnDef="OrderDate">
-        <th mat-header-cell *matHeaderCellDef> Order Date </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </th>
         <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="ItemPrice">
-        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
         <td mat-cell *matCellDef="let element"> {{element.ItemPrice}} </td>
       </ng-container>
   
