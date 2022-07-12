@@ -4,46 +4,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 
-
-@Component({
-  selector: 'app-order-item',
-  templateUrl: './order-item.component.html',
-  styleUrls: ['./order-item.component.scss']
-})
-
-export class OrderItemComponent implements OnInit {
-  dummyOrderdata:any;
-  displayedColumns: string[] = ['ItemNo', 'ItemName', 'ItemType','OrderDate', 'ItemPrice'];
-  dataSource = new MatTableDataSource<FoodItems>(last30DaysList);
- 
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
-  //@ViewChild(MatSort) sort: MatSort;
- 
-  constructor(private _liveAnnouncer: LiveAnnouncer) { }
-
-
-  ngOnInit(): void {
-
-  }
-  ngAfterViewInit() {
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
-  }
-
-   /** Announce the change in sort state for assistive technology. */
-   announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-}
 export interface FoodItems {
   itemName: string;
   itemNo: number;
@@ -82,6 +42,48 @@ const last30DaysList = ELEMENT_DATA.filter(x => {
   }
   return false
 })
+
+
+
+@Component({
+  selector: 'app-order-item',
+  templateUrl: './order-item.component.html',
+  styleUrls: ['./order-item.component.scss']
+})
+
+export class OrderItemComponent implements OnInit {
+  dummyOrderdata:any;
+  displayedColumns: string[] = ['ItemNo', 'ItemName', 'ItemType','OrderDate', 'ItemPrice'];
+  dataSource = new MatTableDataSource<FoodItems>(last30DaysList);
+ 
+  //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // @ViewChild(MatSort, { static: true }) sort: MatSort;
+ 
+  constructor(private _liveAnnouncer: LiveAnnouncer) { }
+
+
+  ngOnInit(): void {
+
+  }
+  ngAfterViewInit() {
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
+  }
+
+   /** Announce the change in sort state for assistive technology. */
+   announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+}
 
 
 
