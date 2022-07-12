@@ -29,31 +29,6 @@ export class OrderItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dummyOrderdata = [
-      {
-
-        'orderId':'zohox123',
-        'orderItems' : 'Dosa,Idly,poori',
-        'orderType' : 'veg',
-        'frequentOrder':'5',
-        'orderDate':'05/07/2020 13:25',
-        'totalAmt':800
-
-    },
-    {
-
-      'orderId':'zohoy124',
-      'orderItems' : 'Chicken,Dosai',
-      'orderType' : 'veg / Nonveg',
-      'frequentOrder':'5',
-      'orderDate':'05/07/2020 13:25',
-      'totalAmt':1000
-
-    }
-
-  
-  
-  ]
   }
   ngAfterViewInit() {
     //this.dataSource.paginator = this.paginator;
