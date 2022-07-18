@@ -12,17 +12,20 @@ export class HeaderComponent implements OnInit {
   
   MenuHead:any
   currentRoute:any
+
+
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
 
     console.log(this.router.url);
-
+    
     
 
     
    
   }
+  
 
  
 

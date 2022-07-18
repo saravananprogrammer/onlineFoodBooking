@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'food-order';
+  title = 'Zoho Online Food Services';
   
+
+
+
+  
+
 }

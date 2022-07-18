@@ -16,6 +16,8 @@ export class CommonserviceService {
   setMenu(items: any) {
     this.menuItems.next(items)
   }
+
+
   getMenu() {
     return this.menuItems
   }
